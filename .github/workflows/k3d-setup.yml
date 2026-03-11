@@ -21,4 +21,8 @@ jobs:
       - name: make deploy
         run: kubectl apply -f httpbin-deployment.yaml
       - name: verify
-        run: kubectl wait -n default pods -l 'app=httpbin' --for=condition=Ready --timeout=120s
+        run: |
+           kubectl wait -n default pods -l 'app=httpbin' --for=condition=Ready --timeout=120s
+           kubectl get pods
+           kubectl get deploy
+           kubectl get svc
