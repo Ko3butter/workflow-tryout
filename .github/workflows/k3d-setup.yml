@@ -16,5 +16,6 @@ jobs:
       - name: create cluster
         run: k3d cluster create my-cluster
       - name: checkup
-        run: k3d cluster list
-           
+        run: |
+           k3d cluster list
+           kubectl get pods -A
