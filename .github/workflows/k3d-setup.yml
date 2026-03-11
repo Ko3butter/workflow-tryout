@@ -1,4 +1,4 @@
-name: k3dziomo
+name: K3d Setup
 
 on:
   workflow_dispatch:
@@ -11,16 +11,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: install k3d
+      - name: Install k3d onto system
         run: wget -q -O - https://raw.githubusercontent.com/k3d-io/k3d/main/install.sh | bash
       - name: create cluster
         run: k3d cluster create my-cluster
-      - name: checkup
+      - name: Check if Cluster is created and running
         run: |
            k3d cluster list
-      - name: make deploy
+      - name: Make Deployment
         run: kubectl apply -f httpbin-deployment.yaml
-      - name: verify
+      - name: Verify if deployment is setup correctly
         run: |
            kubectl wait -n default pods -l 'app=httpbin' --for=condition=Ready --timeout=120s
            kubectl get pods
