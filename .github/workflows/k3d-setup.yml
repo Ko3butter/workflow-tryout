@@ -18,11 +18,14 @@ jobs:
       - name: checkup
         run: |
            k3d cluster list
-           kubectl get pods -A
       - name: make deploy
         run: kubectl apply -f httpbin-deployment.yaml
       - name:
         run: |
+           kubectl get deploy
+           kubectl get pods
+           kubectl get svc
+           sleep 5
            kubectl get deploy
            kubectl get pods
            kubectl get svc
