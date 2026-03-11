@@ -10,10 +10,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: install brew
-        run: brew install wget
-      - name: k3d install
-        run: brew install k3d
+      - name: install k3d
+        run: wget -q -O - https://raw.githubusercontent.com/k3d-io/k3d/main/install.sh | bash
       - name: check up
         run: |
           k3d --version
