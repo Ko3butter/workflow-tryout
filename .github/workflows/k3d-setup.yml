@@ -25,7 +25,3 @@ jobs:
            kubectl get deploy
            kubectl get pods
            kubectl get svc
-           sleep 5
-           kubectl get deploy
-           kubectl get pods
-           kubectl get svc
