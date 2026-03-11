@@ -9,6 +9,7 @@ jobs:
   setup-k3d:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4
       - uses: rinx/setup-k3d@v0.0.2
       - name: Get cluster info
         run: |
