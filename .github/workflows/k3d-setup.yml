@@ -10,8 +10,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-  setup-k3d:
-    steps:
       - name: install brew
         run: brew install wget
       - name: k3d install
