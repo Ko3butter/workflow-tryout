@@ -1,5 +1,11 @@
 name: Setup k3d
-on: push
+
+on:
+  workflow-dispatch:
+  push:
+    branches:
+      - main
+      
 jobs:
   setup-k3d:
     runs-on: ubuntu-latest
