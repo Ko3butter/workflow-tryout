@@ -1,4 +1,4 @@
-name: Setup k3d
+name: k3dziomo
 
 on:
   push:
@@ -7,14 +7,19 @@ on:
       
 jobs:
   setup-k3d:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: rinx/setup-k3d@v0.0.2
-      - name: Get cluster info
-        run: |
-          kubectl cluster-info
-          kubectl get pods -n kube-system
-          kubectl get nodes
-          echo "current-context:" $(kubectl config current-context)
 
+      - name: install brew
+        run: brew install wget
+      - name: k3d install
+        run: brew install k3d
+      - name: check up
+        run: |
+          k3d --version
+          k3d cluster create my-cluster
+          k3d cluster list
+          echo dziala :3
+      
+           
