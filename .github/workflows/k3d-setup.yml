@@ -1,7 +1,6 @@
 name: Setup k3d
 
 on:
-  workflow-dispatch:
   push:
     branches:
       - main
