@@ -13,11 +13,12 @@ jobs:
       - name: install k3d
         run: |
           wget -q -O - https://raw.githubusercontent.com/k3d-io/k3d/main/install.sh | bash
-          sleep 30
+          sleep 10
       - name: check up
         run: |
           k3d --version
           k3d cluster create my-cluster
+          sleep 5
           k3d cluster list
           echo dziala :3
       
