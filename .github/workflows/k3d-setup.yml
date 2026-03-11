@@ -12,7 +12,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: install k3d
-        run: wget -q -O - https://raw.githubusercontent.com/k3d-io/k3d/main/install.sh | bash
+        run: |
+           wget -q -O - https://raw.githubusercontent.com/k3d-io/k3d/main/install.sh | bash
+           sleep 3
       - name: create cluster
         run: k3d cluster create my-cluster
       - name: checkup
