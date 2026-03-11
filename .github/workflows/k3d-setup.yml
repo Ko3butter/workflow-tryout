@@ -21,4 +21,4 @@ jobs:
       - name: make deploy
         run: kubectl apply -f httpbin-deployment.yaml
       - name: verify
-        run: kubectl wait -n observability pods -l 'httpbin' --for=condition=Ready --timeout=120s
+        run: kubectl wait -n observability pods -l 'httpbin-deployment' --for=condition=Ready --timeout=120s
