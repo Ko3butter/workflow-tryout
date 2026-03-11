@@ -23,6 +23,6 @@ jobs:
         run: kubectl apply -f httpbin-deployment.yaml
       - name:
         run: |
-           kubectl get deploy -A
-           kubectl get pods -A
-           kubectl get svc -A
+           kubectl get deploy
+           kubectl get pods
+           kubectl get svc
