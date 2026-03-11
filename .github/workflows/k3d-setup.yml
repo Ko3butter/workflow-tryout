@@ -20,8 +20,5 @@ jobs:
            k3d cluster list
       - name: make deploy
         run: kubectl apply -f httpbin-deployment.yaml
-      - name:
-        run: |
-           kubectl get deploy
-           kubectl get pods
-           kubectl get svc
+      - name: verify
+        run: kubectl wait -n observability pods -l 'httpbin' --for=condition=Ready --timeout=120s
