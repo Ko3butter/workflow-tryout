@@ -20,7 +20,7 @@ jobs:
         with:
           filters: |
             repo:
-              - '**/*.yaml'
+              - 'configs/*.yaml'
 
   yamllint:
     name: yamllint
@@ -30,7 +30,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: run yamllint
-        uses: frenck/action-yamllint@v1
+        uses: ibiqlik/action-yamllint@v3
+        with:
+          file_or_dir: configs/.
+
+        
   k3d:
     name: k3d
     runs-on: ubuntu-latest
