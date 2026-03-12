@@ -10,7 +10,7 @@ jobs:
     name: Detect repo changes
     runs-on: ubuntu-latest
     outputs:
-      yaml-changed: ${{ steps.changes.outputs.repo }}
+      yaml-changed: ${{ steps.changes.outputs.repo == true }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
