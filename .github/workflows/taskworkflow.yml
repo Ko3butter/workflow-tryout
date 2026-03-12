@@ -39,16 +39,19 @@ jobs:
     runs-on: ubuntu-latest
     needs: yamllint
     steps:
-        - run: |
-            wget -q -O - https://raw.githubusercontent.com/k3d-io/k3d/main/install.sh | bash
-            k3d cluster create my-cluster
-        - run: |    
-            kubectl apply -f workflow-tryout/configs/
+      - uses: actions/checkout@v4
+      - run: |
+          wget -q -O - https://raw.githubusercontent.com/k3d-io/k3d/main/install.sh | bash
+          k3d cluster create my-cluster
+      - run: |
+          ls -R
+          kubectl apply -f configs/
   check-status:
      name: check status
      runs-on: ubuntu-latest
      needs: k3d-config
      steps:
+       - uses: actions/checkout@v4
        - run: |
            kubectl wait -n default pods --for=condition=Ready --timeout=120s
            kubectl get pods -A
