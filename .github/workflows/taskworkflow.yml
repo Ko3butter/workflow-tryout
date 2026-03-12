@@ -42,7 +42,7 @@ jobs:
         - run: |
             wget -q -O - https://raw.githubusercontent.com/k3d-io/k3d/main/install.sh | bash
             k3d cluster create my-cluster
-            kubectl apply -f configs/*.yaml
+            kubectl apply -f workflow_tryout/configs/*.yaml
             kubectl wait -n default pods --for=condition=Ready --timeout=120s
             kubectl get pods -A
             kubectl get deploy -A
