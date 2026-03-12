@@ -41,8 +41,8 @@ jobs:
     steps:
         - run: |
             wget -q -O - https://raw.githubusercontent.com/k3d-io/k3d/main/install.sh | bash
-        - run: |
             k3d cluster create my-cluster
+        - run: |    
             kubectl apply -f .
           working-directory: configs
   check-status:
