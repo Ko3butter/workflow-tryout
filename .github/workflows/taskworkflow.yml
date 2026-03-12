@@ -11,9 +11,6 @@ jobs:
     outputs:
       yaml-changed: ${{ steps.changes.outputs.repo }}
     steps:
-      - run: |
-          pwd
-          ls
       - name: Checkout repository
         uses: actions/checkout@v4
       - name: Detect YAML changes
@@ -44,8 +41,9 @@ jobs:
     steps:
         - run: |
             wget -q -O - https://raw.githubusercontent.com/k3d-io/k3d/main/install.sh | bash
+        - run: |
             k3d cluster create my-cluster
-            kubectl apply -f home/runner/work/workflow-tryout/workflow-tryout/configs/.
+            kubectl apply -f .
           working-directory: configs
   check-status:
      name: check status
