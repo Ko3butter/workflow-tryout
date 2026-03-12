@@ -40,10 +40,9 @@ jobs:
     needs: yamllint
     steps:
         - run: |
-            pwd
             wget -q -O - https://raw.githubusercontent.com/k3d-io/k3d/main/install.sh | bash
             k3d cluster create my-cluster
-            kubectl apply -f workflow-tryout/configs/
+            kubectl apply -f /home/runner/work/workflow-tryout/workflow-tryout/configs/.
             kubectl wait -n default pods --for=condition=Ready --timeout=120s
             kubectl get pods -A
             kubectl get deploy -A
