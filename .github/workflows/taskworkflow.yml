@@ -57,9 +57,10 @@ jobs:
           k3d cluster delete $CLUSTER
   verify-homework:
     name: Check if Variable can be used in different jobs.
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     needs: k3d-config
     steps:
+      - uses: actions/checkout@v4
       - run: |
           echo "The Cluster is $CLUSTER"
 
