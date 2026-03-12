@@ -37,7 +37,6 @@ jobs:
           file_or_dir: configs/*.yaml
           strict: true
 
-        
   k3d-config:
     name: k3d setup
     runs-on: ubuntu-latest
@@ -56,8 +55,9 @@ jobs:
       - name: Delete Cluster using its variable
         run: |
           k3d cluster delete $CLUSTER
+
   check-status:
-    name: Check status of env variable
+    name: Check status of ${{ env.CLUSTER }}
     runs-on: ubuntu-latest
     needs: 
       - detect-repo-changes
@@ -65,8 +65,7 @@ jobs:
       - k3d-config
     steps:
       - uses: actions/checkout@v4
-        run: |
-          echo $CLUSTER
+        run: echo "CLUSTER is $CLUSTER"
 
 
 
