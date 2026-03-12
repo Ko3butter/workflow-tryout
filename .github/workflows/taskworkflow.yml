@@ -21,13 +21,18 @@ jobs:
           filters: |
             repo:
               - '**/*.yaml'
+              - 
+
   yamllint:
+    name: yamllint
+    runs-on: ubuntu-latest
     needs: detect-repo-changes
     if: ${{ needs.detect-repo-changes.outputs.yaml-changed == 'true' }}
-    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: frenck/action-yamllint@v1
-        id: yamllint
+      - name: run yamllint
+        uses: frenck/action-yamllint@v1
+
+    
 
     
