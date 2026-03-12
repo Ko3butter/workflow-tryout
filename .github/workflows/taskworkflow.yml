@@ -21,4 +21,12 @@ jobs:
           filters: |
             repo:
               - 'configs/*.yaml'
-        
+  yamllint:
+    needs: detect-repo-changes
+    if: ${{ yaml-changed == true }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: frenck/action-yamllint@v1
+        id: yamllint
+    
