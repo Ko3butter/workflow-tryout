@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   labels:
     app: httpbin
-  name: httpbin-deployment
+  name: httpbin-deploymentfalalalalal
 spec:
   replicas: 1
   selector:
