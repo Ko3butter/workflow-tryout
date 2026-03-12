@@ -20,5 +20,5 @@ jobs:
         with:
           filters: |
             repo:
-              - '**/*.yaml'
+              - 'configs/*.yaml'
         
