@@ -43,8 +43,7 @@ jobs:
             wget -q -O - https://raw.githubusercontent.com/k3d-io/k3d/main/install.sh | bash
             k3d cluster create my-cluster
         - run: |    
-            kubectl apply -f *.yaml
-          working-directory: configs
+            kubectl apply -f workflow-tryout/configs/
   check-status:
      name: check status
      runs-on: ubuntu-latest
