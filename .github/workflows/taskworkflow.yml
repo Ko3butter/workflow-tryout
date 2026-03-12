@@ -52,6 +52,7 @@ jobs:
      needs: k3d-config
      steps:
        - run: |
+           kubectl wait -n default pods --for=condition=Ready --timeout=120s
            kubectl get pods -A
            kubectl get deploy -A
            kubectl get svc -A
