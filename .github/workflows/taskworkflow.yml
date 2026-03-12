@@ -23,7 +23,7 @@ jobs:
               - 'configs/*.yaml'
   yamllint:
     needs: detect-repo-changes
-    if: ${{ yaml-changed }}
+    if: ${{ needs.detect-repo-changes.outputs.yaml-changed == true }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
