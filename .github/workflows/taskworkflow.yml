@@ -44,10 +44,10 @@ jobs:
           wget -q -O - https://raw.githubusercontent.com/k3d-io/k3d/main/install.sh | bash
           k3d cluster create my-cluster        
           kubectl apply -f configs/
-          kubectl wait -n default pods -l 'app-httpbin' --for=condition=Ready --timeout=120s
+          kubectl wait -n default pods --all --for=condition=Ready --timeout=120s
           kubectl get pods -A
-           kubectl get deploy -A
-           kubectl get svc -A
+          kubectl get deploy -A
+          kubectl get svc -A
 
 
 
