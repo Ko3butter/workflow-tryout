@@ -32,7 +32,7 @@ jobs:
       - name: run yamllint
         uses: ibiqlik/action-yamllint@v3
         with:
-          file_or_dir: configs/.
+          file_or_dir: configs/*.yaml
 
         
   k3d:
