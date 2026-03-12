@@ -20,7 +20,7 @@ jobs:
         with:
           filters: |
             repo:
-              - 'configs/*.yaml'
+              - '**/*.yaml'
   yamllint:
     needs: detect-repo-changes
     if: ${{ needs.detect-repo-changes.outputs.yaml-changed == 'true' }}
@@ -29,4 +29,5 @@ jobs:
       - uses: actions/checkout@v4
       - uses: frenck/action-yamllint@v1
         id: yamllint
+
     
