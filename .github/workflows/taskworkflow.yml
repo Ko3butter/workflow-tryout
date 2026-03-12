@@ -57,7 +57,7 @@ jobs:
           k3d cluster delete $CLUSTER
 
   check-status:
-    name: Check status of ${{ env.CLUSTER }}
+    name: Check status of $CLUSTER
     runs-on: ubuntu-latest
     needs: 
       - detect-repo-changes
