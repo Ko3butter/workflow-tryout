@@ -52,7 +52,7 @@ jobs:
           kubectl get deploy -A
           kubectl get svc -A
           k3d cluster list
-      - name: Delete Cluster using its variable
+      - name: Delete Cluster using its variable name
         run: |
           k3d cluster delete $CLUSTER
 
