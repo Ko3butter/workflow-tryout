@@ -11,6 +11,9 @@ jobs:
     outputs:
       yaml-changed: ${{ steps.changes.outputs.repo }}
     steps:
+      - run: |
+          pwd
+          ls
       - name: Checkout repository
         uses: actions/checkout@v4
       - name: Detect YAML changes
