@@ -40,7 +40,8 @@ jobs:
     needs: yamllint
     steps:
       - uses: actions/checkout@v4
-      - id: cluster-name
+      - name: Create CLUSTER variable
+        id: cluster-name
         run: |
           echo "CLUSTER=retsulC" >> "$GITHUB_OUTPUT"
       - run: |
