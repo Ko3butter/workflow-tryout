@@ -1,8 +1,5 @@
 name: Detect, verify YAML Changes and configure K3d
 
-env:
-  CLUSTER: Home-Cluster
-
 on:
   workflow_dispatch:
   pull_request:
@@ -45,7 +42,8 @@ jobs:
       - uses: actions/checkout@v4
       - run: |
           wget -q -O - https://raw.githubusercontent.com/k3d-io/k3d/main/install.sh | bash
-          k3d cluster create $CLUSTER
+          echo "{CLUSTER}={retsulC}" >> "$GITHUB_ENV"
+          k3d cluster create "$CLUSTER"
           kubectl apply -f configs/
           kubectl wait -n default pods --all --for=condition=Ready --timeout=120s
           kubectl get pods -A
@@ -54,7 +52,8 @@ jobs:
           k3d cluster list
       - name: Delete Cluster using its variable name
         run: |
-          k3d cluster delete $CLUSTER
+          k3d cluster delete "$CLUSTER"
+          
   verify-homework:
     name: Check if Variable can be used in different jobs.
     runs-on: ubuntu-latest
@@ -62,7 +61,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: |
-          echo "The Cluster is $CLUSTER"
+          echo "The Cluster is "$CLUSTER"
 
 
 
