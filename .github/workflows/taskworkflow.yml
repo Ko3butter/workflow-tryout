@@ -71,5 +71,6 @@ jobs:
     if: failure()
     steps:
       - uses: actions/checkout@v4
-      - run: echo "Ponieważ GITHUB_ENV pozwala na udostępnianie zmiennych w 1 jobie."
+      - name: wytłumaczenie
+        run: echo "Ponieważ GITHUB_ENV pozwala na udostępnianie zmiennych w 1 jobie."
     
