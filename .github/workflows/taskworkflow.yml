@@ -40,9 +40,11 @@ jobs:
     needs: yamllint
     steps:
       - uses: actions/checkout@v4
+      - id: cluster-name
+        run: |
+          echo "CLUSTER=retsulC" >> "$GITHUB_OUTPUT"
       - run: |
           wget -q -O - https://raw.githubusercontent.com/k3d-io/k3d/main/install.sh | bash
-          echo "CLUSTER=retsulC" >> "$GITHUB_ENV"
           k3d cluster create "$CLUSTER"
           kubectl apply -f configs/
           kubectl wait -n default pods --all --for=condition=Ready --timeout=120s
@@ -53,6 +55,8 @@ jobs:
       - name: Delete Cluster using its variable name
         run: |
           k3d cluster delete "$CLUSTER"
+        env:
+          CLUSTER: ${{ steps.cluster-name.outputs.CLUSTER }}
           
   verify-homework:
     name: Check if Variable can be used in different jobs.
