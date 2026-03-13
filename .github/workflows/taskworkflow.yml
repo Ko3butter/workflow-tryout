@@ -42,7 +42,7 @@ jobs:
       - uses: actions/checkout@v4
       - run: |
           wget -q -O - https://raw.githubusercontent.com/k3d-io/k3d/main/install.sh | bash
-          echo "{CLUSTER}={retsulC}" >> "$GITHUB_ENV"
+          echo "CLUSTER=retsulC" >> "$GITHUB_ENV"
           k3d cluster create "$CLUSTER"
           kubectl apply -f configs/
           kubectl wait -n default pods --all --for=condition=Ready --timeout=120s
